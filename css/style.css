@@ -1,86 +1,150 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root {
-  --bg-url: url(../img/bg-desktop.jpg);
-  --text-color: #fff;
-  --stroke-color: rgba(255, 255, 255, 0.5);
-  --surface-color: rgba(255, 255, 255, 0.1);
+:root{
+    --bg-url:url(../img/bg-desktop.jpg);
+    --text-color: #fff;
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.5);
+    --switch-gb-url: url(../img/moonstars.svg);
+    --highlight-color: rgba(255, 255, 255, 0.2);
 }
 
-body * {
-  font-family: "Inter", sans-serif;
-  color: var(--text-color);
+.light{
+    --bg-url:url(../img/background-light.jpg);
+    --text-color: #000;
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.1);
+    --surface-color-hover: rgba(0, 0, 0, 0.5);
+    --switch-gb-url: url(../img/Sun.svg);
+    --highlight-color: rgba(0, 0, 0, 0.2);
 }
 
-body {
-  background: var(--bg-url) no-repeat top center / cover;
-  height: 100vh;
+body *{
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
 }
-/* Modificações container */
-#container {
-  width: 100%;
-  max-width: 588px;
-  margin: 56px auto 0px;
-  padding: 0 24px;
+
+body{
+    background: var(--bg-url) no-repeat top center / cover;
+    height: 100vh;
+}
+/*Modificações container*/
+#container{
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
 }
 /* modificações na imagem e no texto do perfil */
 #profile {
-  text-align: center;
-  padding: 24px;
+    text-align: center;
+    padding: 24px;
 }
 
-#profile img {
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  border: 4px solid rgba(146, 146, 146, 0.808);
-  object-fit: cover;
+#profile img{
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 4px solid rgba(146, 146, 146, 0.808);
+    object-fit: cover;
 }
 
-#profile p {
-  margin-top: 8px;
-  font-weight: 500;
-  line-height: 24px;
+#profile p{
+    margin-top: 8px;
+    font-weight: 500;
+    line-height: 24px;
 }
 
+/* switch button */
+#switch{
+    position: relative;
+    width: 64px;
+    margin: auto;
+}
+
+#switch button{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 0;
+    background: white var(--switch-gb-url) no-repeat center;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    animation: slide-out 0.2s;
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
+}
+
+.light #switch button{
+    animation: slide-in 0.2s forwards;
+}
+
+#switch span{
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
 /* links */
-#links ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+#links ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+
 }
 
 #links ul li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
 
-  border: 1px solid var(--stroke-color);
-  border-radius: 8px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+    background: var(--surface-color);
 
-  background: var(--surface-color);
 
-  text-decoration: none;
-  font-weight: bold;
+    text-decoration: none;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
+
+/* pseudo seletor*/
+#links ul li a:hover{
+    background: var(--surface-color-hover);
+    border: 1px solid var(--text-color);
+}
+
+/* modificações dos links das redes sociais */
 #socialLinks{
     display: flex;
     justify-content: center;
-    padding: 24px;  
+    padding: 24px;
     gap: 16px;
     font-size: 24px;
-
 }
-#socialLinks a{
+
+#socialLinks a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,4 +158,25 @@ body {
 
 #footer a{
     text-decoration: none;
+}
+
+/* animações */
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0;
+    }
 }
